@@ -1,9 +1,7 @@
-Custom Web Stack Template
+L-System Toy
 ================================================
 
-Template for whenever I'm building a new web 
-app/toy/experiment/thing to be hosted on GitHub 
-using my custom tech stack.
+Generate L-Systems
 
 Technology
 -----------------------------------------------
