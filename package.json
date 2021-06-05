@@ -1,7 +1,7 @@
 {
-  "name": "custom-web-stack-template",
+  "name": "l-system-toy",
   "version": "1.0.0",
-  "description": "My custom stack for web apps hosted on github pages",
+  "description": "Generate l-systems",
   "author": "Anshul Kharbanda",
   "license": "MIT",
   "keywords": [
