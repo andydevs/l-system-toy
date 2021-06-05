@@ -8,7 +8,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // Build config
-const siteTitle = 'Site Title'
+const siteTitle = 'L-System Toy'
 const buildDir = 'public'
 
 // Webpack config module
