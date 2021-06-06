@@ -5,14 +5,27 @@
  * Created: 6-5-2021
  */
 import './style/main.scss'
+import Screen from './screen'
+import Turtle from './turtle'
 
-// Bundle script
-let canvas = document.querySelector('#mycanvas')
-let ctx = canvas.getContext('2d')
+// Turtle
+let screen = new Screen('#mycanvas')
+let turtle = new Turtle(screen)
 
 // M'draw some stuff
-ctx.clearRect(0, 0, canvas.width, canvas.height)
-ctx.beginPath()
-ctx.moveTo(canvas.width/2, 3*canvas.height/4)
-ctx.lineTo(canvas.width/2 - 100, 3*canvas.height/4 - 100)
-ctx.stroke()
+screen.clear()
+turtle.forwardLine()
+turtle.push()
+turtle.left()
+turtle.forwardLine()
+turtle.right()
+turtle.right()
+turtle.forwardLine()
+turtle.pop()
+turtle.right()
+turtle.forwardLine()
+turtle.left()
+turtle.left()
+turtle.forwardLine()
+turtle.left()
+turtle.forwardLine()
