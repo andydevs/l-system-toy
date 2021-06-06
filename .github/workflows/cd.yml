@@ -19,6 +19,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.3
         with:
           path: public
+          name: artifact
   
   # Test
   test:
@@ -43,10 +44,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Download Artifact
         uses: actions/download-artifact@v2.0.9
-        with:
-          path: public
       - name: Deploy to GitHub Pages
         uses: rdarida/simple-github-pages-deploy-action@v1
         with:
-          git-base-folder: public
+          git-base-folder: artifact
           commit-message: Auto build static site
