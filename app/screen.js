@@ -10,6 +10,7 @@ export default class Screen {
     constructor(selector) {
         this.canvas = document.querySelector(selector)
         this.ctx = this.canvas.getContext('2d')
+        this.shift = 0.98
     }
 
     clear() {
@@ -20,8 +21,8 @@ export default class Screen {
 
     center(v) {
         return new Vector(
-            this.canvas.width/2 + v.x,
-            3*this.canvas.height/4 - v.y
+            Math.round(this.canvas.width/2) + v.x,
+            Math.round(this.shift*this.canvas.height) - v.y
         )
     }
 

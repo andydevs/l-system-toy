@@ -10,7 +10,16 @@
         Verdana, sans-serif;
 }
 
+body {
+    margin: 0;
+}
+
+#app-root {
+    text-align: center;
+}
+
 #mycanvas {
+    margin: 0;
     border: 1px solid #ccc;
     max-width: 100%;
 }

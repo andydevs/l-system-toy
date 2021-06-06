@@ -8,9 +8,8 @@ import Vector from './vector';
 import TurtleState from './turtlestate';
 
 export default class Turtle {
-    constructor(screen, distance=100, angle=30) {
+    constructor(screen) {
         this.screen = screen
-        this.config = { distance, angle }
         this.state = new TurtleState()
         this.stack = []
     }
@@ -29,23 +28,23 @@ export default class Turtle {
         this.state = this.stack.pop()
     }
 
-    left() {
-        this.state = this.state.incrementAngle(this.config.angle)
+    left(angle) {
+        this.state = this.state.incrementAngle(angle)
     }
 
-    right() {
-        this.state = this.state.incrementAngle(-this.config.angle)
+    right(angle) {
+        this.state = this.state.incrementAngle(-angle)
     }
 
-    forward() {
+    forward(distance) {
         this.state = this.state.incrementPos(
-            Vector.polar(this.state.angle, this.config.distance)
+            Vector.polar(this.state.angle, distance)
         )
     }
 
-    forwardLine() {
+    forwardLine(distance) {
         let newpos = this.state.pos.add(
-            Vector.polar(this.state.angle, this.config.distance)
+            Vector.polar(this.state.angle, distance)
         )
         this.screen.drawLine(this.state.pos, newpos)
         this.state = this.state.newPos(newpos)
