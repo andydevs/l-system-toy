@@ -3,18 +3,26 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "build",
-			"label": "Build"
+			"script": "install",
+			"label": "Install"
 		},
 		{
 			"type": "npm",
-			"script": "test",
-			"label": "Run Test"
+			"script": "build",
+			"label": "Build",
+			"dependsOn": ["Install"]
 		},
 		{
 			"type": "npm",
 			"script": "start",
-			"label": "Development Server"
+			"label": "Development Server",
+			"dependsOn": ["Install"]
+		},
+		{
+			"type": "npm",
+			"script": "test",
+			"label": "Run Test",
+			"dependsOn": ["Install"]
 		},
 		{
 			"type": "npm",
