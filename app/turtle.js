@@ -8,9 +8,15 @@ import Vector from './vector';
 import TurtleState from './turtlestate';
 
 export default class Turtle {
-    constructor(screen) {
+    constructor(screen, distance=100, angle=30) {
         this.screen = screen
-        this.config = { distance: 100, angle: 30 }
+        this.config = { distance, angle }
+        this.state = new TurtleState()
+        this.stack = []
+    }
+
+    reset() {
+        this.screen.clear()
         this.state = new TurtleState()
         this.stack = []
     }
