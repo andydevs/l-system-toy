@@ -5,34 +5,29 @@
  * Created: 6-5-2021
  */
 
-export default function processTurtleLang(string, turtle) {
+export default function processTurtleLang(string, turtle, config) {
+    // Get parameters
+    let { distance, angle } = config
     turtle.reset()
+
+    // Turtle lang
+    let commands = {
+        'F': () => turtle.forwardLine(distance),
+        'f': () => turtle.forward(distance),
+        '+': () => turtle.left(angle),
+        '-': () => turtle.right(angle),
+        '[': () => turtle.push(),
+        ']': () => turtle.pop()
+    }
+
+    // Process commands
     for (let i = 0; i < string.length; i++) {
         const c = string[i];
-        switch (c) {
-            case 'F':
-                turtle.forwardLine()
-                break;
-            case 'f':
-                turtle.forward()
-                break;
-            case '+':
-                turtle.left()
-                break;
-            case '-':
-                turtle.right()
-                break;
-            case '[':
-                turtle.push()
-                break;
-            case ']':
-                turtle.pop()
-                break;
-            default:
-                console.error(
-                    'Invalid turtlelang char: ' + c 
-                    + ' (at ' + i + ')')
-                break;
+        if (commands.hasOwnProperty(c)) {
+            commands[c]()
+        }
+        else {
+            console.error(`Invalid turtlelang char: ${c} (at ${i})`)
         }
     }
 }

@@ -7,9 +7,18 @@
 import './style/main.scss'
 import Screen from './screen'
 import Turtle from './turtle'
-import processTurtleLang from './turtlelang';
+import LSystem from './lsystem'
 
-// M'drawsomestuff
+// Setup
 let screen = new Screen('#mycanvas')
-let turtle = new Turtle(screen, 50)
-processTurtleLang('[+F--F]-F++F-', turtle)
+let turtle = new Turtle(screen)
+let lsystem = new LSystem({
+    axiom: 'F',
+    productions: {
+        'F': 'F[+F+F]F[-F-F]F'
+    },
+    distance: 5,
+    angle: 15
+})
+let result = lsystem.generate(5)
+result.draw(turtle)
