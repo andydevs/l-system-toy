@@ -7,7 +7,7 @@
 
 export default function processTurtleLang(string, turtle, config) {
     // Get parameters
-    let { distance, angle } = config
+    let { distance, angle, radius } = config
     turtle.reset()
 
     // Turtle lang
@@ -17,7 +17,8 @@ export default function processTurtleLang(string, turtle, config) {
         '+': () => turtle.left(angle),
         '-': () => turtle.right(angle),
         '[': () => turtle.push(),
-        ']': () => turtle.pop()
+        ']': () => turtle.pop(),
+        'C': () => turtle.circle(radius)
     }
 
     // Process commands

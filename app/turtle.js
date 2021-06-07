@@ -49,4 +49,10 @@ export default class Turtle {
         this.screen.drawLine(this.state.pos, newpos)
         this.state = this.state.newPos(newpos)
     }
+
+    circle(radius) {
+        this.forward(radius)
+        this.screen.drawCircle(this.state.pos, radius)
+        this.forward(-radius)
+    }
 }

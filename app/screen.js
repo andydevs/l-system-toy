@@ -34,4 +34,11 @@ export default class Screen {
         this.ctx.lineTo(toc.x, toc.y)
         this.ctx.stroke()
     }
+
+    drawCircle(c, r) {
+        let cc = this.center(c)
+        this.ctx.beginPath()
+        this.ctx.arc(cc.x, cc.y, r, 0, 2*Math.PI)
+        this.ctx.stroke()
+    }
 }

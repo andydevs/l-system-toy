@@ -7,11 +7,12 @@
 import LSystemResult from './lsystemresult';
 
 export default class LSystem {
-    constructor({ axiom='', productions='', distance=100, angle=30 }) {
+    constructor({ axiom='', productions='', distance=100, angle=30, radius=1 }) {
         this.axiom = axiom
         this.productions = productions
         this.distance = distance
         this.angle = angle
+        this.radius = radius
     }
 
     process(string) {
@@ -29,6 +30,6 @@ export default class LSystem {
         for (let i = 0; i < n; ++i) {
             string = this.process(string)
         }
-        return new LSystemResult(string, this.distance, this.angle)
+        return new LSystemResult(string, this.distance, this.angle, this.radius)
     }
 }
