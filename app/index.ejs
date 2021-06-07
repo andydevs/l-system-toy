@@ -14,46 +14,26 @@
             width=720
             height=1280>
         </canvas>
-        <div id="controls">
-            <div>
-                <label for="distance">Distance:</label>
-                <input type="range" 
-                    name="distance" 
-                    id="distance"
-                    min=5
-                    max=50
-                    step=5
-                    value=10>
-            </div>
-            <div>
-                <label for="angle">Angle:</label>
-                <input type="range" 
-                    name="angle" 
-                    id="angle"
-                    min=1
-                    max=45
-                    step=1
-                    value=15>
-            </div>
-            <div>
-                <label for="radius">Radius:</label>
-                <input type="range" 
-                    name="radius" 
-                    id="radius"
-                    min=1
-                    max=10
-                    step=1
-                    value=5>
-            </div>
-            <div>
-                <label for="iters">Iterations:</label>
-                <input type="range"
-                    name="iters" 
-                    id="iters" 
-                    min=1 max=6 step=1
-                    value=3>
-            </div>
-        </div>
+        <table id="controls">
+            <tbody>
+                <tr>
+                    <td><label for="distance">Distance:</label></td>
+                    <td><input type="range" name="distance" id="distance" min=5 max=50 step=5 value=10></td>
+                </tr>
+                <tr>
+                    <td><label for="angle">Angle:</label></td>
+                    <td><input type="range" name="angle" id="angle" min=1 max=45 step=1 value=15></td>
+                </tr>
+                <tr>
+                    <td><label for="radius">Radius:</label></td>
+                    <td><input type="range" name="radius" id="radius" min=1 max=10 step=1 value=5></td>
+                </tr>
+                <tr>
+                    <td><label for="iters">Iterations:</label></td>
+                    <td><input type="range" name="iters" id="iters" min=1 max=6 step=1 value=3></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
