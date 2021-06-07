@@ -6,6 +6,17 @@
  */
 import Vector from './vector'
 
+// Color map
+const colors = {
+    'k': 'black',
+    'r': 'red',
+    'o': 'orange',
+    'y': '#aa0',
+    'g': 'green',
+    'b': 'blue',
+    'v': '#a0a'
+}
+
 export default class Screen {
     constructor(selector) {
         this.canvas = document.querySelector(selector)
@@ -26,17 +37,19 @@ export default class Screen {
         )
     }
 
-    drawLine(fm, to) {
+    drawLine(fm, to, c='k') {
         let fmc = this.center(fm)
         let toc = this.center(to)
+        this.ctx.strokeStyle = colors[c]
         this.ctx.beginPath()
         this.ctx.moveTo(fmc.x, fmc.y)
         this.ctx.lineTo(toc.x, toc.y)
         this.ctx.stroke()
     }
 
-    drawCircle(c, r) {
-        let cc = this.center(c)
+    drawCircle(ct, r, c='k') {
+        let cc = this.center(ct)
+        this.ctx.strokeStyle = colors[c]
         this.ctx.beginPath()
         this.ctx.arc(cc.x, cc.y, r, 0, 2*Math.PI)
         this.ctx.stroke()

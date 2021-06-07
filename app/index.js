@@ -19,16 +19,21 @@ let iterInput = document.querySelector('#iters')
 let screen = new Screen('#mycanvas')
 let turtle = new Turtle(screen)
 let lsystem = new LSystem({
-    axiom: 'C',
+    axiom: 'yFC',
     productions: {
-        'C': 'FC',
-        'F': 'F[+F+FC]F[-F-FC]F'
+        'b': 'v',
+        'r': 'b',
+        'o': 'r',
+        'y': 'o',
+        'C': 'yFC',
+        'F': 'F[+yFC]F[-yFC]F'
     },
     distance: parseInt(distanceInput.value),
     angle: parseInt(angleInput.value),
     radius: parseInt(radiusInput.value)
 })
 let result = lsystem.generate(parseInt(iterInput.value))
+console.log(result.string)
 
 function render() {
     result.radius = parseInt(radiusInput.value)
@@ -42,7 +47,6 @@ function generateAngRender() {
     render()
 }
 
-// 
 render()
 distanceInput.addEventListener('change', render)
 angleInput.addEventListener('change', render)

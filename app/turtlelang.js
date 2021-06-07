@@ -18,17 +18,24 @@ export default function processTurtleLang(string, turtle, config) {
         '-': () => turtle.right(angle),
         '[': () => turtle.push(),
         ']': () => turtle.pop(),
-        'C': () => turtle.circle(radius)
+        'C': () => turtle.circle(radius),
+        'k': () => turtle.color('k'),
+        'r': () => turtle.color('r'),
+        'o': () => turtle.color('o'),
+        'y': () => turtle.color('y'),
+        'g': () => turtle.color('g'),
+        'b': () => turtle.color('b'),
+        'v': () => turtle.color('v'),
+    }
+
+    let err = () => {
+        console.error(`Invalid turtlelang char: ${c} (at ${i})`)
     }
 
     // Process commands
     for (let i = 0; i < string.length; i++) {
         const c = string[i];
-        if (commands.hasOwnProperty(c)) {
-            commands[c]()
-        }
-        else {
-            console.error(`Invalid turtlelang char: ${c} (at ${i})`)
-        }
+        const command = commands.hasOwnProperty(c) ? commands[c] : err
+        command()
     }
 }
