@@ -47,6 +47,7 @@ export default class Screen {
         this.ctx.moveTo(fmc.x, fmc.y)
         this.ctx.lineTo(toc.x, toc.y)
         this.ctx.stroke()
+        this.ctx.lineWidth = 1
     }
 
     drawCircle(ct, r, c='k') {

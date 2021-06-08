@@ -20,18 +20,13 @@ let generateButton = document.querySelector('#generate')
 let screen = new Screen('#mycanvas')
 let turtle = new Turtle(screen)
 let lsystem = new LSystem({
-    axiom: 'gFC',
+    axiom: '[+gFC][-gFC]',
     productions: {
         'g': 'n',
         'r': 'n',
         'y': 'b',
         'b': 'v',
         'v': 'n',
-        'C': [
-            'gFC',
-            'yFC',
-            'rFC'
-        ],
         'F': [
             '(F)[g+F+FC][g-F-FC](F)',
             '(F)[g+F-FC][g-F+FC](F)',
