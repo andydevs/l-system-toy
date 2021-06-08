@@ -28,14 +28,11 @@ export default function processTurtleLang(string, turtle, config) {
         'v': () => turtle.color('v'),
     }
 
-    let err = () => {
-        console.error(`Invalid turtlelang char: ${c} (at ${i})`)
-    }
-
     // Process commands
     for (let i = 0; i < string.length; i++) {
         const c = string[i];
-        const command = commands.hasOwnProperty(c) ? commands[c] : err
+        const command = commands.hasOwnProperty(c) ? commands[c] 
+            : () => console.error(`Invalid turtlelang char: ${c} (at ${i})`)
         command()
     }
 }
