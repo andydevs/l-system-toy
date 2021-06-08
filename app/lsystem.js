@@ -4,21 +4,40 @@
  * Author:  Anshul Kharbanda
  * Created: 6-5-2021
  */
-import LSystemState from './lsystemstate'
+import processTurtleLang from './turtlelang';
 
+/**
+ * Holds L-System configuration, including preferred distance, angle, and leaf radius
+ */
 export default class LSystem {
+    /**
+     * Constructor
+     * 
+     * @param {object} param0 L-System options
+     */
     constructor({ axiom='', productions={}, distance=100, angle=30, radius=1 }) {
         this.axiom = axiom
         this.productions = productions
         this.distance = distance
         this.angle = angle
         this.radius = radius
+        this.reset()
     }
 
-    createState() {
-        return new LSystemState(this)
+    /**
+     * Reset current L-System state
+     */
+    reset() {
+        this.string = this.axiom
     }
 
+    /**
+     * Process command character
+     * 
+     * @param {char} c command character
+     * 
+     * @returns corresponding production string
+     */
     processCommand(c) {
         if (this.productions.hasOwnProperty(c)) {
             if (this.productions[c] instanceof Array) {
@@ -34,11 +53,32 @@ export default class LSystem {
         }
     }
 
+    /**
+     * Process lsystem string
+     * 
+     * @param {string} string input command string
+     * 
+     * @returns Resulting string
+     */
     process(string) {
         let news = ''
         for (let i = 0; i < string.length; ++i) {
             news += this.processCommand(string[i])
         }
         return news
+    }
+
+    /**
+     * Run generation routine on new string
+     */
+    generate() {
+        this.string = this.process(this.string)
+    }
+
+    /**
+     * Draw string representation using turtle
+     */
+    draw(turtle) {
+        processTurtleLang(this.string, turtle, this)
     }
 }

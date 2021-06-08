@@ -16,7 +16,7 @@ let radiusInput = document.querySelector('#radius')
 let resetButton = document.querySelector('#reset')
 let generateButton = document.querySelector('#generate')
 
-// Setup
+// Setup screen, turtle, and lsystem
 let screen = new Screen('#mycanvas')
 let turtle = new Turtle(screen)
 let lsystem = new LSystem({
@@ -45,28 +45,37 @@ let lsystem = new LSystem({
     angle: parseInt(angleInput.value),
     radius: parseInt(radiusInput.value)
 })
-let state = lsystem.createState()
 
+/**
+ * Render updated L-System string with new parameters
+ */
 function render() {
-    state.lsystem.radius = parseInt(radiusInput.value)
-    state.lsystem.distance = parseInt(distanceInput.value)
-    state.lsystem.angle = parseInt(angleInput.value)
-    state.draw(turtle)
+    lsystem.radius = parseInt(radiusInput.value)
+    lsystem.distance = parseInt(distanceInput.value)
+    lsystem.angle = parseInt(angleInput.value)
+    lsystem.draw(turtle)
 }
 
+/**
+ * Generate updated L-System result and render
+ */
 function generateAndRender() {
-    state.generate()
-    state.draw(turtle)
+    lsystem.generate()
+    lsystem.draw(turtle)
 }
 
+/**
+ * Reset L-System result and render
+ */
 function resetAndRender() {
-    state.reset()
-    state.draw(turtle)
+    lsystem.reset()
+    lsystem.draw(turtle)
 }
 
-render()
+// Hook event listener and initial render
 distanceInput.addEventListener('change', render)
 angleInput.addEventListener('change', render)
 radiusInput.addEventListener('change', render)
 resetButton.addEventListener('click', resetAndRender)
 generateButton.addEventListener('click', generateAndRender)
+render()
