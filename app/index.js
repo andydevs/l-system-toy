@@ -13,7 +13,8 @@ import LSystem from './lsystem'
 let distanceInput = document.querySelector('#distance')
 let angleInput = document.querySelector('#angle')
 let radiusInput = document.querySelector('#radius')
-let iterInput = document.querySelector('#iters')
+let resetButton = document.querySelector('#reset')
+let generateButton = document.querySelector('#generate')
 
 // Setup
 let screen = new Screen('#mycanvas')
@@ -26,29 +27,34 @@ let lsystem = new LSystem({
         'o': 'r',
         'y': 'o',
         'C': 'yFC',
-        'F': 'F[+yFC]F[-yFC]F'
+        'F': 'F[y+F+FC][y-F-FC]F'
     },
     distance: parseInt(distanceInput.value),
     angle: parseInt(angleInput.value),
     radius: parseInt(radiusInput.value)
 })
-let result = lsystem.generate(parseInt(iterInput.value))
-console.log(result.string)
+let state = lsystem.createState()
 
 function render() {
-    result.radius = parseInt(radiusInput.value)
-    result.distance = parseInt(distanceInput.value)
-    result.angle = parseInt(angleInput.value)
-    result.draw(turtle)
+    state.lsystem.radius = parseInt(radiusInput.value)
+    state.lsystem.distance = parseInt(distanceInput.value)
+    state.lsystem.angle = parseInt(angleInput.value)
+    state.draw(turtle)
 }
 
-function generateAngRender() {
-    result = lsystem.generate(parseInt(iterInput.value))
-    render()
+function generateAndRender() {
+    state.generate()
+    state.draw(turtle)
+}
+
+function resetAndRender() {
+    state.reset()
+    state.draw(turtle)
 }
 
 render()
 distanceInput.addEventListener('change', render)
 angleInput.addEventListener('change', render)
 radiusInput.addEventListener('change', render)
-iterInput.addEventListener('change', generateAngRender)
+resetButton.addEventListener('click', resetAndRender)
+generateButton.addEventListener('click', generateAndRender)

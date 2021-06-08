@@ -4,7 +4,7 @@
  * Author:  Anshul Kharbanda
  * Created: 6-5-2021
  */
-import LSystemResult from './lsystemresult';
+import LSystemState from './lsystemstate'
 
 export default class LSystem {
     constructor({ axiom='', productions='', distance=100, angle=30, radius=1 }) {
@@ -15,6 +15,10 @@ export default class LSystem {
         this.radius = radius
     }
 
+    createState() {
+        return new LSystemState(this)
+    }
+
     process(string) {
         let news = ''
         for (let i = 0; i < string.length; ++i) {
@@ -23,13 +27,5 @@ export default class LSystem {
                 ? this.productions[c] : c
         }
         return news
-    }
-
-    generate(n=1) {
-        let string = this.axiom
-        for (let i = 0; i < n; ++i) {
-            string = this.process(string)
-        }
-        return new LSystemResult(string, this.distance, this.angle, this.radius)
     }
 }
