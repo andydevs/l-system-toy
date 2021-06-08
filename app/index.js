@@ -22,11 +22,15 @@ let turtle = new Turtle(screen)
 let lsystem = new LSystem({
     axiom: 'gFC',
     productions: {
-        'g': 'k',
+        'g': 'n',
+        'r': 'n',
+        'y': 'b',
+        'b': 'v',
+        'v': 'n',
         'C': [
             'gFC',
-            'gFC',
-            'gFC'
+            'yFC',
+            'rFC'
         ],
         'F': [
             '(F)[g+F+FC][g-F-FC](F)',

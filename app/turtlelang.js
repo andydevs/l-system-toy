@@ -27,7 +27,8 @@ export default function processTurtleLang(string, turtle, config) {
         'y': () => turtle.color('y'),
         'g': () => turtle.color('g'),
         'b': () => turtle.color('b'),
-        'v': () => turtle.color('v')
+        'v': () => turtle.color('v'),
+        'n': () => turtle.color('n')
     }
 
     // Process commands

@@ -14,7 +14,8 @@ const colors = {
     'y': '#aa0',
     'g': 'green',
     'b': 'blue',
-    'v': '#a0a'
+    'v': '#a0a',
+    'n': '#530'
 }
 
 export default class Screen {
