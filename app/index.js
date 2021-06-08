@@ -20,25 +20,22 @@ let generateButton = document.querySelector('#generate')
 let screen = new Screen('#mycanvas')
 let turtle = new Turtle(screen)
 let lsystem = new LSystem({
-    axiom: 'C',
+    axiom: 'gFC',
     productions: {
-        'b': 'v',
-        'r': 'b',
-        'o': 'r',
-        'y': 'o',
+        'g': 'k',
         'C': [
-            'yFC',
-            'oFC',
-            'rFC'
+            'gFC',
+            'gFC',
+            'gFC'
         ],
         'F': [
-            'F[y+F+FC][y-F-FC]F',
-            'F[y+F-FC][y-F+FC]F',
-            'F[y+F+FC]F',
-            'F[y+F-FC]F',
-            'F[y-F-FC]F',
-            'F[y-F+FC]F',
-            'FF'
+            '(F)[g+F+FC][g-F-FC](F)',
+            '(F)[g+F-FC][g-F+FC](F)',
+            '(F)[g+F+FC](F)',
+            '(F)[g+F-FC](F)',
+            '(F)[g-F-FC](F)',
+            '(F)[g-F+FC](F)',
+            '(FF)'
         ]
     },
     distance: parseInt(distanceInput.value),

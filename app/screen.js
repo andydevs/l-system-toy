@@ -37,10 +37,11 @@ export default class Screen {
         )
     }
 
-    drawLine(fm, to, c='k') {
+    drawLine(fm, to, c='k', w=1) {
         let fmc = this.center(fm)
         let toc = this.center(to)
         this.ctx.strokeStyle = colors[c]
+        this.ctx.lineWidth = w
         this.ctx.beginPath()
         this.ctx.moveTo(fmc.x, fmc.y)
         this.ctx.lineTo(toc.x, toc.y)

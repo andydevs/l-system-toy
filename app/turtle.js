@@ -28,6 +28,14 @@ export default class Turtle {
         this.state = this.stack.pop()
     }
 
+    thicker() {
+        this.state = this.state.incrementThickness()
+    }
+
+    thinner() {
+        this.state = this.state.decrementThickness()
+    }
+
     left(angle) {
         this.state = this.state.incrementAngle(angle)
     }
@@ -50,7 +58,7 @@ export default class Turtle {
         let newpos = this.state.pos.add(
             Vector.polar(this.state.angle, distance)
         )
-        this.screen.drawLine(this.state.pos, newpos, this.state.color)
+        this.screen.drawLine(this.state.pos, newpos, this.state.color, this.state.thickness)
         this.state = this.state.newPos(newpos)
     }
 
