@@ -18,19 +18,38 @@ const colors = {
     'n': '#530'
 }
 
+/**
+ * Wrapper around canvas to make it easier to
+ * draw objects around canvas
+ */
 export default class Screen {
+    /**
+     * Construct screen around canvas
+     * 
+     * @param {string} selector html selctor of canvas object
+     */
     constructor(selector) {
         this.canvas = document.querySelector(selector)
         this.ctx = this.canvas.getContext('2d')
         this.shift = 0.98
     }
 
+    /**
+     * Clear screen
+     */
     clear() {
         this.ctx.clearRect(0, 0, 
             this.canvas.width, 
             this.canvas.height)
     }
 
+    /**
+     * Converts vector from world coords to screen coords
+     * 
+     * @param {Vector} v input vector in world coords
+     * 
+     * @returns vector converted to screen coords
+     */
     center(v) {
         return new Vector(
             Math.round(this.canvas.width/2) + v.x,
@@ -38,6 +57,14 @@ export default class Screen {
         )
     }
 
+    /**
+     * Draw line on screen
+     * 
+     * @param {Vector} fm from vector
+     * @param {Vector} to to vector
+     * @param {string} c color
+     * @param {int} w line width
+     */
     drawLine(fm, to, c='k', w=1) {
         let fmc = this.center(fm)
         let toc = this.center(to)
@@ -50,6 +77,13 @@ export default class Screen {
         this.ctx.lineWidth = 1
     }
 
+    /**
+     * Draw circle on screen
+     * 
+     * @param {Vector} ct circle center
+     * @param {int} r circle radius
+     * @param {string} c circle color
+     */
     drawCircle(ct, r, c='k') {
         let cc = this.center(ct)
         this.ctx.strokeStyle = colors[c]
