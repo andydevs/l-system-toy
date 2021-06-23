@@ -14,7 +14,7 @@ import Controls from './controls';
 let screen = new Screen('#mycanvas')
 let turtle = new Turtle(screen)
 let lsystem = new LSystem({
-    axiom: '[+gFC][-gFC]',
+    axiom: 'gFC',
     productions: {
         'g': 'n',
         'r': 'n',

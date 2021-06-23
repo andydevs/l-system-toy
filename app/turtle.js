@@ -5,23 +5,32 @@
  * Created: 6-5-2021
  */
 import Vector from './vector';
-import TurtleState from './turtlestate';
 
 export default class Turtle {
     constructor(screen) {
         this.screen = screen
-        this.state = new TurtleState()
+        this.state = {
+            pos: new Vector(0, 0),
+            angle: 90,
+            color: 'k',
+            thickness: 1
+        }
         this.stack = []
     }
 
     reset() {
         this.screen.clear()
-        this.state = new TurtleState()
+        this.state = {
+            pos: new Vector(0, 0),
+            angle: 90,
+            color: 'k',
+            thickness: 1
+        }
         this.stack = []
     }
 
     push() {
-        this.stack.push(this.state)
+        this.stack.push(Object.assign({}, this.state))
     }
 
     pop() {
@@ -29,37 +38,39 @@ export default class Turtle {
     }
 
     thicker() {
-        this.state = this.state.incrementThickness()
+        this.state.thickness += 1
     }
 
     thinner() {
-        this.state = this.state.decrementThickness()
+        this.state.thickness -= 1
     }
 
     left(angle) {
-        this.state = this.state.incrementAngle(angle)
+        this.state.angle += angle
     }
 
     color(col) {
-        this.state = this.state.newColor(col)
+        this.state.color = col
     }
 
     right(angle) {
-        this.state = this.state.incrementAngle(-angle)
+        this.state.angle -= angle
+    }
+
+    _nextPos(distance) {
+        return this.state.pos.add(
+            Vector.polar(this.state.angle, distance)
+        )
     }
 
     forward(distance) {
-        this.state = this.state.incrementPos(
-            Vector.polar(this.state.angle, distance)
-        )
+        this.state.pos = this._nextPos(distance)
     }
 
     forwardLine(distance) {
-        let newpos = this.state.pos.add(
-            Vector.polar(this.state.angle, distance)
-        )
+        let newpos = this._nextPos(distance)
         this.screen.drawLine(this.state.pos, newpos, this.state.color, this.state.thickness)
-        this.state = this.state.newPos(newpos)
+        this.state.pos = newpos
     }
 
     circle(radius) {
