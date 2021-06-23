@@ -1,7 +1,10 @@
 L-System Toy
 ================================================
 
-Generate L-Systems
+![Screenshot](./screenshot.png)
+
+A toy webpage that for generating tree-like graphics 
+using L-Systems.
 
 Technology
 -----------------------------------------------
