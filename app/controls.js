@@ -15,6 +15,7 @@ export default class Controls {
      * @param {object} param0 callbacks
      */
     constructor({ onRender=() => {}, onReset=() => {}, onGenerate=() => {} }) {
+        // Inputs
         this.distanceInput = document.querySelector('#distance')
         this.angleInput = document.querySelector('#angle')
         this.radiusInput = document.querySelector('#radius')

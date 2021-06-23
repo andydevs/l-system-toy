@@ -6,7 +6,9 @@
  */
 
 /**
- * Holds L-System configuration, including preferred distance, angle, and leaf radius
+ * Contains information and logic for
+ * generating turtle lang strings via
+ * an L-System
  */
 export default class LSystem {
     /**
