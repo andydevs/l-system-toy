@@ -15,12 +15,9 @@ export default class LSystem {
      * 
      * @param {object} param0 L-System options
      */
-    constructor({ axiom='', productions={}, distance=100, angle=30, radius=1 }) {
+    constructor({ axiom='', productions={} }) {
         this.axiom = axiom
         this.productions = productions
-        this.distance = distance
-        this.angle = angle
-        this.radius = radius
         this.reset()
     }
 

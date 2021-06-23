@@ -34,9 +34,9 @@ let lsystem = new LSystem({
 })
 let controls = new Controls({
     onRender() {
-        lsystem.distance = this.distance
-        lsystem.angle = this.angle
-        lsystem.radius = this.radius
+        turtle.config.distance = this.distance
+        turtle.config.angle = this.angle
+        turtle.config.radius = this.radius
         lsystem.draw(turtle)
     },
     onGenerate() {

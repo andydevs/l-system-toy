@@ -9,6 +9,11 @@ import Vector from './vector';
 export default class Turtle {
     constructor(screen) {
         this.screen = screen
+        this.config = {
+            distance: 100,
+            angle: 30,
+            radius: 1
+        }
         this.state = {
             pos: new Vector(0, 0),
             angle: 90,
@@ -45,37 +50,40 @@ export default class Turtle {
         this.state.thickness -= 1
     }
 
-    left(angle) {
-        this.state.angle += angle
+    left() {
+        this.state.angle += this.config.angle
     }
 
     color(col) {
         this.state.color = col
     }
 
-    right(angle) {
-        this.state.angle -= angle
+    right() {
+        this.state.angle -= this.config.angle
     }
 
-    _nextPos(distance) {
+    _posAt(distance) {
         return this.state.pos.add(
             Vector.polar(this.state.angle, distance)
         )
     }
 
-    forward(distance) {
-        this.state.pos = this._nextPos(distance)
+    _nextPos() {
+        return this._posAt(this.config.distance)
     }
 
-    forwardLine(distance) {
-        let newpos = this._nextPos(distance)
+    forward() {
+        this.state.pos = this._nextPos()
+    }
+
+    forwardLine() {
+        let newpos = this._nextPos()
         this.screen.drawLine(this.state.pos, newpos, this.state.color, this.state.thickness)
         this.state.pos = newpos
     }
 
-    circle(radius) {
-        this.forward(radius)
-        this.screen.drawCircle(this.state.pos, radius, this.state.color)
-        this.forward(-radius)
+    circle() {
+        let center = this._posAt(this.config.radius)
+        this.screen.drawCircle(center, this.config.radius, this.state.color)
     }
 }
