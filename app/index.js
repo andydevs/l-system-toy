@@ -37,14 +37,17 @@ let controls = new Controls({
         turtle.config.distance = this.distance
         turtle.config.angle = this.angle
         turtle.config.radius = this.radius
-        lsystem.draw(turtle)
+        turtle.reset()
+        turtle.process(lsystem.string)
     },
     onGenerate() {
         lsystem.generate()
-        lsystem.draw(turtle)
+        turtle.reset()
+        turtle.process(lsystem.string)
     },
     onReset() {
         lsystem.reset(),
-        lsystem.draw(turtle)
+        turtle.reset()
+        turtle.process(lsystem.string)
     }
 })

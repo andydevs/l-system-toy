@@ -70,11 +70,4 @@ export default class LSystem {
     generate() {
         this.string = this.process(this.string)
     }
-
-    /**
-     * Draw string representation using turtle
-     */
-    draw(turtle) {
-        turtle.process(this.string)
-    }
 }

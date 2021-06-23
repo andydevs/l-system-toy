@@ -6,20 +6,26 @@
  */
 import Vector from './vector';
 
+// Default turtle state
+const DEFAULT_STATE = {
+    pos: new Vector(0, 0),
+    angle: 90,
+    color: 'k',
+    thickness: 1
+}
+
+// Default turtle param configuration
+const DEFAULT_CONFIG = {
+    distance: 100,
+    angle: 30,
+    radius: 1
+}
+
 export default class Turtle {
     constructor(screen) {
         this.screen = screen
-        this.config = {
-            distance: 100,
-            angle: 30,
-            radius: 1
-        }
-        this.state = {
-            pos: new Vector(0, 0),
-            angle: 90,
-            color: 'k',
-            thickness: 1
-        }
+        this.config = Object.assign({}, DEFAULT_CONFIG)
+        this.state = Object.assign({}, DEFAULT_STATE)
         this.stack = []
     }
 
@@ -51,12 +57,7 @@ export default class Turtle {
 
     reset() {
         this.screen.clear()
-        this.state = {
-            pos: new Vector(0, 0),
-            angle: 90,
-            color: 'k',
-            thickness: 1
-        }
+        this.state = Object.assign({}, DEFAULT_STATE)
         this.stack = []
     }
 
