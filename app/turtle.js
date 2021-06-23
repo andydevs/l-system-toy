@@ -23,6 +23,32 @@ export default class Turtle {
         this.stack = []
     }
 
+    process(string) {
+        this.reset()
+        for (let c of string) {
+            switch (c) {
+                case 'F': this.forwardLine(); break;
+                case 'f': this.forward(); break;
+                case '+': this.left(); break;
+                case '-': this.right(); break;
+                case '[': this.push(); break;
+                case ']': this.pop(); break;
+                case '(': this.thicker(); break;
+                case ')': this.thinner(); break;
+                case 'C': this.circle(); break;
+                case 'k': this.color('k'); break;
+                case 'r': this.color('r'); break;
+                case 'o': this.color('o'); break;
+                case 'y': this.color('y'); break;
+                case 'g': this.color('g'); break;
+                case 'b': this.color('b'); break;
+                case 'v': this.color('v'); break;
+                case 'n': this.color('n'); break;
+                default: break;
+            }
+        }
+    }
+
     reset() {
         this.screen.clear()
         this.state = {
@@ -62,16 +88,6 @@ export default class Turtle {
         this.state.angle -= this.config.angle
     }
 
-    _posAt(distance) {
-        return this.state.pos.add(
-            Vector.polar(this.state.angle, distance)
-        )
-    }
-
-    _nextPos() {
-        return this._posAt(this.config.distance)
-    }
-
     forward() {
         this.state.pos = this._nextPos()
     }
@@ -85,5 +101,15 @@ export default class Turtle {
     circle() {
         let center = this._posAt(this.config.radius)
         this.screen.drawCircle(center, this.config.radius, this.state.color)
+    }
+
+    _posAt(distance) {
+        return this.state.pos.add(
+            Vector.polar(this.state.angle, distance)
+        )
+    }
+
+    _nextPos() {
+        return this._posAt(this.config.distance)
     }
 }

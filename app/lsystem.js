@@ -4,7 +4,6 @@
  * Author:  Anshul Kharbanda
  * Created: 6-5-2021
  */
-import processTurtleLang from './turtlelang';
 
 /**
  * Holds L-System configuration, including preferred distance, angle, and leaf radius
@@ -76,6 +75,6 @@ export default class LSystem {
      * Draw string representation using turtle
      */
     draw(turtle) {
-        processTurtleLang(this.string, turtle, this)
+        turtle.process(this.string)
     }
 }
