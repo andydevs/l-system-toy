@@ -3,7 +3,7 @@ L-System Toy
 
 ![Screenshot](./screenshot.png)
 
-A toy webpage that for generating tree-like graphics 
+A toy webpage for generating tree-like graphics 
 using L-Systems.
 
 Technology
