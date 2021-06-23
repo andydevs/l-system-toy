@@ -33,25 +33,14 @@ export default class LSystem {
      * Run generation routine on new string
      */
     generate() {
-        this.string = this._process(this.string)
+        let old = this.string
+        this.string = ''
+        for (let c of old) {
+            this.string += this._processCommand(c)
+        }
     }
 
     // PRIVATE
-
-    /**
-     * Process lsystem string
-     * 
-     * @param {string} string input command string
-     * 
-     * @returns Resulting string
-     */
-    _process(string) {
-        let news = ''
-        for (let i = 0; i < string.length; ++i) {
-            news += this._processCommand(string[i])
-        }
-        return news
-    }
 
     /**
      * Process command character
