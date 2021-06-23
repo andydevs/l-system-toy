@@ -30,13 +30,37 @@ export default class LSystem {
     }
 
     /**
+     * Run generation routine on new string
+     */
+    generate() {
+        this.string = this._process(this.string)
+    }
+
+    // PRIVATE
+
+    /**
+     * Process lsystem string
+     * 
+     * @param {string} string input command string
+     * 
+     * @returns Resulting string
+     */
+    _process(string) {
+        let news = ''
+        for (let i = 0; i < string.length; ++i) {
+            news += this._processCommand(string[i])
+        }
+        return news
+    }
+
+    /**
      * Process command character
      * 
      * @param {char} c command character
      * 
      * @returns corresponding production string
      */
-    processCommand(c) {
+    _processCommand(c) {
         if (this.productions.hasOwnProperty(c)) {
             if (this.productions[c] instanceof Array) {
                 let index = Math.floor(Math.random()*this.productions[c].length)
@@ -49,27 +73,5 @@ export default class LSystem {
         else {
             return c
         }
-    }
-
-    /**
-     * Process lsystem string
-     * 
-     * @param {string} string input command string
-     * 
-     * @returns Resulting string
-     */
-    process(string) {
-        let news = ''
-        for (let i = 0; i < string.length; ++i) {
-            news += this.processCommand(string[i])
-        }
-        return news
-    }
-
-    /**
-     * Run generation routine on new string
-     */
-    generate() {
-        this.string = this.process(this.string)
     }
 }
